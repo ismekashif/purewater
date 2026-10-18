@@ -1,0 +1,35 @@
+{
+  "javascript_syntax": "passed",
+  "screen_render_harness": [
+    {
+      "role": "customer",
+      "render_test_passed": true,
+      "error": ""
+    },
+    {
+      "role": "store",
+      "render_test_passed": true,
+      "error": ""
+    },
+    {
+      "role": "rider",
+      "render_test_passed": true,
+      "error": ""
+    },
+    {
+      "role": "admin",
+      "render_test_passed": true,
+      "error": ""
+    },
+    {
+      "role": "review",
+      "render_test_passed": true,
+      "error": ""
+    }
+  ],
+  "rendered_screen_states": 44,
+  "generated_control_handlers_checked": 271,
+  "local_link_checks": "passed",
+  "browser_visual_audit": "not performed",
+  "live_integrations": "not implemented"
+}

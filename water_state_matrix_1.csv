@@ -1,0 +1,30 @@
+Domain,State,Location,Display,Next action / guardrail,Dependency,Prototype coverage
+Payment,Initiation,Customer / payment,Opening payment or ready to initiate,No confirmation implied,Cashfree order creation,Interactive simulation
+Payment,Processing,Customer / payment,Outcome not established,No retry while unresolved,Provider status reconciliation,Interactive simulation
+Payment,Pending / unverified,Customer / payment,Neutral pending panel,Check status; no second payment,Server-verified status,Interactive simulation
+Payment,Paid / order unconfirmed,Customer / payment,Separate payment and order facts,Check status; help,Order commit/reconciliation,Interactive simulation
+Payment,Confirmed,Customer / payment,Payment and order confirmation,Track order,Verified provider and order events,Interactive simulation
+Payment,Definitive failure,Customer / payment,Specific failure,Review checkout and retry,Final failure status,Interactive simulation
+Payment,Customer exit,Customer / payment,Neutral exit explanation,Check status,Exit does not prove failure,Interactive simulation
+Dispatch,Waiting for acceptance,Store / detail,Outstanding request,Monitor progress,Request-issued event,Interactive simulation
+Dispatch,First rider declined,Store / detail,Declined; reassignment in progress,Monitor next confirmed request,Assignment sequence TBD,Interactive simulation
+Dispatch,Timeout,Store and rider,Expired request no longer actionable,Reassign / check status,Timer trigger and expiry TBD,Interactive simulation
+Dispatch,All eligible attempts exhausted,Store / attention,No eligible rider accepted,Manual assignment,Eligibility and exhaustion rules TBD,Interactive simulation
+Dispatch,Override conflict,Store / override,Action not applied; fresh state,Review and reconfirm,Record version/concurrency,Interactive simulation
+Dispatch,Acceptance unverified,Rider / request,No confirmed assignment,Check status; do not start,Server acceptance verification,Interactive simulation
+Scheduling,Available window,Customer / checkout,Selectable delivery window,Choose date and window,Slot API and timezone TBD,Interactive simulation
+Scheduling,Fully booked,Customer / checkout,Disabled labeled slot,Choose another window,Capacity data TBD,Interactive simulation
+Scheduling,Selection invalidated,Customer / checkout,Explain selected slot changed,Choose replacement; preserve rest,Checkout revalidation,Handoff-only; not fully simulated
+Scheduling,Unavailable date,Customer / checkout,Unavailable date identified,Choose another date,Date availability API TBD,Handoff-only; not fully simulated
+Notifications,Unread / read,All / notification dialog,Unread dot plus text,Open destination marks read,Per-user read-state API,Interactive simulation
+Notifications,Push granted,Customer Account / Admin Settings,Granted demo state,In-app updates remain,Real push subscription TBD,Interactive simulation
+Notifications,Push denied,Customer Account / Admin Settings,Denied demo state,Use in-app updates,Do not repeatedly prompt,Interactive simulation
+Notifications,Push unavailable,Customer Account / Admin Settings,Unavailable demo state,Use in-app updates,Browser support detection,Interactive simulation
+Connectivity,Offline,All / banner,No confirmed updates,Preserve inputs; pause writes,Network plus server outcome,Interactive simulation
+Connectivity,Reconnecting / unresolved,All,Updates require verification,Check authoritative status,Recovery/idempotency,Handoff-only; not fully simulated
+Tracking,Delayed / revised window,Customer / tracking,What changed and next step,Help / review updates,Confirmed estimate update,Interactive simulation
+Tracking,Assignment pending,Customer / tracking,Ready without rider assignment,Wait for verified update / help,Assignment state API,Interactive simulation
+Auth,Invalid / expired OTP,Customer / login,Inline cause and recovery,Correct code / resend,"Auth provider, server expiry",Interactive simulation
+Catalogue,Changed reorder,Customer / Orders,"Reprice flagged, unavailable item omitted",Review cart; no purchase repeated,Current stock and price API,Interactive simulation
+Address,Unsupported,Customer / address dialog,Address not supported,Choose another address,Coverage validation TBD,Interactive simulation
+Delivery,Completion,Rider / Active,Review confirmation then demo success,History after confirmation,Permission/transition verification,Interactive simulation

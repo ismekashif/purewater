@@ -1,0 +1,5 @@
+/* Demo-only public asset cache. Never reuse for authenticated production pages or payment APIs. */
+const CACHE='water-design-demo-1';const ASSETS=["water_customer_1.html", "water_store_1.html", "water_rider_1.html", "water_admin_1.html", "water_review_1.html", "water_delivery_theme_1.css", "water_icon_1.svg", "water_icon_192_1.png", "water_icon_512_1.png", "water_customer_manifest_1.webmanifest", "water_store_manifest_1.webmanifest", "water_rider_manifest_1.webmanifest", "water_admin_manifest_1.webmanifest", "water_review_manifest_1.webmanifest"];
+self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));});
+self.addEventListener('activate',e=>{e.waitUntil(self.clients.claim());});
+self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==self.location.origin||!ASSETS.some(a=>u.pathname.endsWith('/'+a)))return;e.respondWith(fetch(e.request).then(r=>{if(r.ok){const clone=r.clone();caches.open(CACHE).then(c=>c.put(e.request,clone));}return r;}).catch(()=>caches.match(e.request)));});
