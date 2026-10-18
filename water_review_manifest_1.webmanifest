@@ -1,8 +1,8 @@
 {
-  "id": "./water_review_1.html",
+  "id": "./index.html",
   "name": "Clear Water \u00b7 Review Prototype",
   "short_name": "Water Review",
-  "start_url": "./water_review_1.html",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#F4F8F7",
